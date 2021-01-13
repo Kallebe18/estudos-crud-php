@@ -1,0 +1,17 @@
+php:
+  build: .
+  ports:
+    - '80:80'
+    - '443:443'
+  volumes:
+    - ./src:/var/www/html
+  links:
+    - db
+db:
+  image: mysql:8
+  volumes:
+    - /var/lib/mysql
+  environment:
+    - MYSQL_USER=kallebe
+    - MYSQL_ROOT_PASSWORD=batatinha123
+    - MYSQL_DATABASE=dev
